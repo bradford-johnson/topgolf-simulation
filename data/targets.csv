@@ -1,0 +1,10 @@
+x,y,size,color,name
+1,1,0.5,red,red1
+3,1,0.5,red,red2
+5,1,0.5,red,red3
+2,3,0.75,yellow,yellow1
+4,3,0.75,yellow,yellow2
+3,5.25,1,green,green
+4,7.5,1,brown,brown
+2,9.25,1,blue,blue
+4,11.5,1,white,white
