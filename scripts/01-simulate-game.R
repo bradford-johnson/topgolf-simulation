@@ -1,7 +1,7 @@
 # load packages
-pacman::p_load(ggplot2,
-               dplyr,
-               ggforce)
+library(ggplot2)
+library(dplyr)
+library(ggforce)
 
 # generate a random vector of numbers within the field boundaries
 # set seed
