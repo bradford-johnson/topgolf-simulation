@@ -89,8 +89,10 @@ tg +
   geom_circle(data = white_target, aes(x0=x, y0=y, r=size), color = t_white) +
   
   geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 13.5, ymax = 14),
-            color = t_trench, linewidth = .3, fill = NA) 
-
+            color = t_trench, linewidth = .3, fill = NA) +
+  labs(title = Sys.Date())
+ggsave("plots/daily-game.png")    
+unlink("Rplots.pdf")
 #---- mutate {in_target} ----
 df <- df |>
   mutate(in_red1 = sqrt((1 - x)^2 + (1 - y)^2) < .5,
@@ -107,3 +109,4 @@ df <- df |>
 #---- mutate {in_overall} ----
 df |>
   mutate(anyTRUE = if_any(.cols = contains('in'), I))
+
