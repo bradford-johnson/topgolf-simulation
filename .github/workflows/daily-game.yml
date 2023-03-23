@@ -20,7 +20,7 @@ jobs:
           cache-version: 2
           packages:
             any::dplyr
-            any::ggplot
+            any::ggplot2
             any::ggforce
             any::readr
 
