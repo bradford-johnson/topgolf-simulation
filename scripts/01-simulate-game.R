@@ -90,9 +90,13 @@ tg +
   
   geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 13.5, ymax = 14),
             color = t_trench, linewidth = .3, fill = NA) +
+  theme_void() +
   labs(title = Sys.Date())
+
+# save plot
 ggsave("plots/daily-game.png")    
 unlink("Rplots.pdf")
+
 #---- mutate {in_target} ----
 df <- df |>
   mutate(in_red1 = sqrt((1 - x)^2 + (1 - y)^2) < .5,
