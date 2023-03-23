@@ -22,6 +22,7 @@ jobs:
             any::dplyr
             any::ggplot
             any::ggforce
+            any::readr
 
       - name: run-script
         run: Rscript scripts/01-simulate-game.R
