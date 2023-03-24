@@ -148,7 +148,7 @@ tg +
   
   geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 13.5, ymax = 14),
             color = t_trench, linewidth = .3, fill = NA) +
-  #theme_void() +
+  theme_void() +
   labs(title = title_lab,
        subtitle = club_lab)
 
