@@ -3,14 +3,68 @@ library(ggplot2)
 library(dplyr)
 library(ggforce)
 
-# generate a random vector of numbers within the field boundaries
 # set seed
-set.seed(as.numeric(Sys.Date()))
+set.seed(as.numeric(Sys.time()))
 
-y <- runif(20, min = 0.0, max = 14)
-x <- runif(20, min = 0.0, max = 6)
+#---- select club ----
+clubs <-c("Driver", "3 Wood", "Hybrid",
+          "4 Iron", "6 Iron", "8 Iron",
+          "Pitching Wedge")
 
-df <- data.frame(x,y)
+selected_club <- sample(clubs, 1)
+
+club_lab <- paste0("Club: ", selected_club)
+
+#---- simulate hits ----
+
+if (selected_club == "Driver") {
+  y <- runif(20, min = 8.0, max = 14)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "3 Wood") {
+  y <- runif(20, min = 8.0, max = 14)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "Hybrid") {
+  y <- runif(20, min = 6.0, max = 12.5)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "4 Iron") {
+  y <- runif(20, min = 8.0, max = 12.5)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "6 Iron") {
+  y <- runif(20, min = 4.9, max = 11.0)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "8 Iron") {
+  y <- runif(20, min = 4.8, max = 10.0)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
+
+if (selected_club == "Pitching Wedge") {
+  y <- runif(20, min = 0.5, max = 6.0)
+  x <- runif(20, min = 0.0, max = 6)
+  
+  df <- data.frame(x,y)
+}
 
 # load data
 dat <- readr::read_csv("data/targets.csv")
@@ -74,6 +128,10 @@ tg <- ggplot() +
   theme_classic()
 
 #---- point plot ----
+# create title
+title_lab <- paste0(Sys.time())
+
+# plot
 tg +
   geom_point(data = df, aes(x, y)) +
   geom_circle(data = red_target, aes(x0=x, y0=y, r=size), color = t_red) +
@@ -90,10 +148,11 @@ tg +
   
   geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 13.5, ymax = 14),
             color = t_trench, linewidth = .3, fill = NA) +
-  theme_void() +
-  labs(title = Sys.Date())
+  #theme_void() +
+  labs(title = title_lab,
+       subtitle = club_lab)
 
-# save plot
+#---- save plot ----
 ggsave("plots/daily-game.png")    
 unlink("Rplots.pdf")
 
