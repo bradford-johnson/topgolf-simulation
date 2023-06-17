@@ -25,7 +25,7 @@ jobs:
             any::readr
 
       - name: run-script
-        run: Rscript scripts/01-simulate-game.R
+        run: Rscript src/scripts/01-current_players.R
         
       - name: commit files
         run: |
